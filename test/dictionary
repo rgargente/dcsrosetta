@@ -1,0 +1,27 @@
+dictionary = 
+{
+    ["DictKey_UnitName_381"] = "Zug",
+    ["DictKey_ActionText_400"] = "Specht 2 meldet:\
+Ziel 3 erreicht.\
+Weiter Richtung 205.\
+Landung in Sochi-Adler.",
+    ["DictKey_GroupName_141"] = "Viking",
+    ["DictKey_UnitName_43"] = "Einheit #016",
+    ["DictKey_WptName_144"] = "",
+    ["DictKey_descriptionRedTask_2"] = "Auftrag für Rotte Specht.\
+Überfliegen sie folgende Zielpunkte:\
+Zielpunkt 1: Kurs 271 bis zum  ARC 9  bei Peredovaya\
+\
+Zielpunkt 2:  Kurs 268 bis Psebay (Industriegebiet, Gleisende)\
+(Am Zielpunkt liegt Maykop 87 km inRichtung 308)\
+\
+Zielpunkt 3:  Kurs 259 bis Hamyshki\
+(Maykop  liegt von dort 65 km in Richtung 349)\
+\
+Von dort aus fliegen sie Richtung 205.\
+Ziel: Landung in Sochi-Adler (RSBN 6).\
+\
+",
+    ["DictKey_WptName_55"] = "",
+    ["DictKey_GroupName_412"] = "AN-30",
+} -- end of dictionary
