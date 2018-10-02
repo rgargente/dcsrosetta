@@ -1,0 +1,316 @@
+campaign = 
+{
+    ["name_DE"] = "Pilotenalltag",
+    ["directory"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\",
+    ["startStage"] = 1,
+    ["picture"] = "Pilotenalltag.jpg",
+    ["pictureSuccess_DE"] = "Ende.jpg",
+    ["fullPath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag.cmp",
+    ["pictureFailed_DE"] = "Ende1.jpg",
+    ["necessaryUnits"] = 
+    {
+        ["MiG-21Bis"] = "MiG-21Bis",
+    }, -- end of ["necessaryUnits"]
+    ["pictureFailed"] = "Ende1.jpg",
+    ["description_DE"] = "Pilotenalltag.\
+Diese Kampagne handelt von 2 frischgebackenen Mig-21 Piloten, die in den kommenden Wochen verstärkt im Flugbetrieb eingesetzt werde, damit sie Erfahrung sammeln und Routine bekommen, bevor sie auf Krymsk stationiert werden. Sie sollen die Umgebung und die Militärstützpunkte nördlich des Kaukasus kennenlernen. Der \"Kalte Krieg\" ist zwar noch nicht vorbei, aber Luftkämpfe gibt es in dieser Kampagne nicht. Stattdessen erlebt man den \"langweiligen\" Alltag eines Mig-21 Piloten, der mit seinem Flügelmann die Rotte \"Specht\" bildet und gehorsam alle Befehle und Aufgaben bestmöglich erledigt. Ab und zu erfordern besondere Situationen besondere Aufgaben, die vorwiegend von Rotte \"Specht\" bewältigt werden müssen, um ihre Nervenstärke unter Belastung zu testen. Und nun,ab ins Cockpit.\
+Viel Erfolg.  ",
+    ["name"] = "Pilotenalltag",
+    ["description"] = "Pilotenalltag.\
+Diese Kampagne handelt von 2 frischgebackenen Mig-21 Piloten, die in den kommenden Wochen verstärkt im Flugbetrieb eingesetzt werde, damit sie Erfahrung sammeln und Routine bekommen, bevor sie auf Krymsk stationiert werden. Sie sollen die Umgebung und die Militärstützpunkte nördlich des Kaukasus kennenlernen. Der \"Kalte Krieg\" ist zwar noch nicht vorbei, aber Luftkämpfe gibt es in dieser Kampagne nicht. Stattdessen erlebt man den \"langweiligen\" Alltag eines Mig-21 Piloten, der mit seinem Flügelmann die Rotte \"Specht\" bildet und gehorsam alle Befehle und Aufgaben bestmöglich erledigt. Ab und zu erfordern besondere Situationen besondere Aufgaben, die vorwiegend von Rotte \"Specht\" bewältigt werden müssen, um ihre Nervenstärke unter Belastung zu testen. Und nun,ab ins Cockpit.\
+Viel Erfolg.  ",
+    ["version"] = 1,
+    ["pictureSuccess"] = "Ende.jpg",
+    ["picture_DE"] = "Pilotenalltag.jpg",
+    ["stages"] = 
+    {
+        [14] = 
+        {
+            ["name"] = "Stufe 14",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_14.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_14.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [14]
+        [13] = 
+        {
+            ["name"] = "Stufe 13",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_13.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_13.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [13]
+        [7] = 
+        {
+            ["name"] = "Stufe 7",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_07.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_07.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [7]
+        [1] = 
+        {
+            ["name"] = "Stufe 1",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_01.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_01.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [1]
+        [2] = 
+        {
+            ["name"] = "Stufe 2",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_02.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_02.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [2]
+        [4] = 
+        {
+            ["name"] = "Stufe 4",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_04.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_04.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [4]
+        [8] = 
+        {
+            ["name"] = "Stufe 8",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_08.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_08.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [8]
+        [16] = 
+        {
+            ["name"] = "Stufe 16",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_16.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_16.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [16]
+        [9] = 
+        {
+            ["name"] = "Stufe 9",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_09.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_09.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [9]
+        [5] = 
+        {
+            ["name"] = "Stufe 5",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_05.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_05.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [5]
+        [10] = 
+        {
+            ["name"] = "Stufe 10",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_10.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_10.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [10]
+        [11] = 
+        {
+            ["name"] = "Stufe 11",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_11.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_11.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [11]
+        [3] = 
+        {
+            ["name"] = "Stufe 3",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_03.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_03.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [3]
+        [6] = 
+        {
+            ["name"] = "Stufe 6",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_06.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_06.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [6]
+        [12] = 
+        {
+            ["name"] = "Stufe 12",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_12.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_12.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [12]
+        [15] = 
+        {
+            ["name"] = "Stufe 15",
+            ["missions"] = 
+            {
+                [1] = 
+                {
+                    ["interval"] = 
+                    {
+                        [1] = 0,
+                        [2] = 100,
+                    }, -- end of ["interval"]
+                    ["file"] = "Pilotenalltag_15.miz",
+                    ["description"] = "",
+                    ["fullpath"] = "C:\\Users\\kunde\\Saved Games\\DCS\\Missions\\Campaigns\\MultiLang\\Pilotenalltag_15.miz",
+                }, -- end of [1]
+            }, -- end of ["missions"]
+        }, -- end of [15]
+    }, -- end of ["stages"]
+} -- end of campaign
