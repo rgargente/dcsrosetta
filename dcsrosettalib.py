@@ -2,6 +2,7 @@ import json
 import os
 import tempfile
 import zipfile
+from googletrans import Translator
 
 
 def unzip_mission(source_miz, dest_folder):
@@ -31,25 +32,28 @@ def load_dict(dict_path):
     return eval(s)
 
 
-def save_dict(dict: [], dest_path):
+def save_dict(dict: {}, dest_path):
     s = json.dumps(dict, indent=4, ensure_ascii=False)
     s = 'dictionary = \n' + s
     s = s.replace('"DictKey_', '["DictKey_').replace('": ', '"] = ')
-    s = s.replace('\\\\','\\\n')
+    s = s.replace('\\\\', '\\\n')
     s = s.replace('"\n}', '",\n} -- end of dictionary\n')
     with open(dest_path, 'w', encoding='UTF-8') as f:
         f.write(s)
+
+
+def translate_dict(dict: {}):
+    translator = Translator()
+    trans_dict = {}
+    for k, v in dict.items():
+        trans_dict[k] = translator.translate(v, dest='en').text
+    return trans_dict
 
 
 def translate(source_miz: str, dest_miz: str):
     tmp = tempfile.mkdtemp()
     unzip_mission(source_miz, tmp)
 
-    with open(os.path.join(tmp, 'l10n/DEFAULT/dictionary')) as f:
-        s = f.read()
-
-        # yaml_dict = yaml.safe_load(s)
-    # for i in yaml_dict:
-    #     print(i)
+    dict = load_dict(os.path.join(tmp, 'l10n/DEFAULT/dictionary'))
 
     zip_mission(tmp, dest_miz)
