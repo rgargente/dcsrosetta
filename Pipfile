@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 pytest = "*"
-googletrans = "*"
 
 [dev-packages]
 
