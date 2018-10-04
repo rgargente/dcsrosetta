@@ -37,5 +37,5 @@ def test_translate_dict():
 def test_translate_miz(tmpdir):
     source_miz = 'Pilotenalltag/Pilotenalltag_01.miz'
     dest_mix = os.path.join(tmpdir, '01.miz')
-    dcsrosettalib.translate(source_miz, dest_mix)
+    dcsrosettalib.translate_miz(source_miz, dest_mix)
     assert False

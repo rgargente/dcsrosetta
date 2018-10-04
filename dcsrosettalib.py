@@ -1,7 +1,9 @@
 import json
 import os
+import shutil
 import tempfile
 import zipfile
+
 from yandex_translate import YandexTranslate
 
 
@@ -53,10 +55,11 @@ def translate_dict(dict: {}):
     return trans_dict
 
 
-def translate(source_miz: str, dest_miz: str):
+def translate_miz(source_miz: str, dest_miz: str):
     tmp = tempfile.mkdtemp()
     unzip_mission(source_miz, tmp)
-
+    shutil.copytree(os.path.join(tmp, 'l10n/DEFAULT/'),
+                    os.path.join('l10n/EN/'))
     dict = load_dict(os.path.join(tmp, 'l10n/DEFAULT/dictionary'))
-
+    save_dict(translate_dict(dict), 'l10n/EN/dictionary')
     zip_mission(tmp, dest_miz)
