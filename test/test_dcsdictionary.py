@@ -18,7 +18,7 @@ def test_load_dict(tmpdir):
 
 def test_load_cmp_dict():
     path = 'Pilotenalltag/Pilotenalltag.cmp'
-    dict = DcsDictionary.from_file_path(path, 'campaign')
+    dict = DcsDictionary.from_file_path(path)
     assert False
 
 

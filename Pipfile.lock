@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c8453d2bb02f4a5c3417b2982a012b5afe0fcd9ad20977eed9ee068acae44a83"
+            "sha256": "2c43b5e37a42a41c75e7998897880c91bd2713c2e0b7eda655ee7f726898dd71"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,6 +16,12 @@
         ]
     },
     "default": {
+        "antlr4-python3-runtime": {
+            "hashes": [
+                "sha256:1b26b72c4492cef310542da10bf6b2ab4aa1775618fc6003f75b55ae9eaa3fd3"
+            ],
+            "version": "==4.7.1"
+        },
         "atomicwrites": {
             "hashes": [
                 "sha256:0312ad34fcad8fac3704d441f7b317e50af620823353ec657a53e981f92920c0",
@@ -59,6 +65,13 @@
                 "sha256:684a38a6f903c1d71d6d5fac066b58d7768af4de2b832e426ec79c30daa94a16"
             ],
             "version": "==2.7"
+        },
+        "luaparser": {
+            "hashes": [
+                "sha256:8b4721dc79e9474dff381b750812efa7df7749ec3c13c8a5821f463ca6851408"
+            ],
+            "index": "pypi",
+            "version": "==2.0.2"
         },
         "more-itertools": {
             "hashes": [
