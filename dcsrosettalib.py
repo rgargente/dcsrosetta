@@ -2,7 +2,7 @@ import json
 import os
 import tempfile
 import zipfile
-from googletrans import Translator
+from yandex_translate import YandexTranslate
 
 
 def unzip_mission(source_miz, dest_folder):
@@ -43,10 +43,13 @@ def save_dict(dict: {}, dest_path):
 
 
 def translate_dict(dict: {}):
-    translator = Translator()
+    translator = YandexTranslate('trnsl.1.1.20181004T104638Z.0b0cac35b15caf05.17c474e1314fc98b6efeae0124aa1767f8b6594c')
     trans_dict = {}
     for k, v in dict.items():
-        trans_dict[k] = translator.translate(v, dest='en').text
+        if v:
+            trans_dict[k] = translator.translate(v, 'en')['text'][0]
+        else:
+            trans_dict[k] = v
     return trans_dict
 
 

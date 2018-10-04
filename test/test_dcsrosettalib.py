@@ -30,8 +30,8 @@ def test_load_dict(tmpdir):
 def test_translate_dict():
     dict = dcsrosettalib.load_dict('dictionary')
     trans = dcsrosettalib.translate_dict(dict)
-    assert trans['DictKey_ActionText_400'] == \
-           'Woodpecker 2 reports: \\ Destination 3 reached. \\ Next direction 205. \\ Landing in Sochi-Adler.'
+    assert len(dict) == len(trans)
+    assert trans['DictKey_ActionText_400'].startswith('Woodpecker 2 reports:')
 
 
 def test_translate_miz(tmpdir):
