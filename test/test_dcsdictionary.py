@@ -1,3 +1,4 @@
+import pytest
 import os
 
 from dcsdictionary import DcsDictionary, CmpDictionary
@@ -23,9 +24,20 @@ def test_translate_dict():
     assert tdd.dict['DictKey_ActionText_400'].startswith('Woodpecker 2 reports:')
 
 
-def test_translate_cmp_desc():
+@pytest.fixture()
+def cmp():
     path = 'Pilotenalltag/Pilotenalltag.cmp'
-    cmp = CmpDictionary.from_file_path(path)
+    return CmpDictionary.from_file_path(path)
+
+
+def test_translate_cmp_desc(cmp):
     cmp.translate()
     assert '["description_EN"] = "Everyday life of a pilot' in cmp.lua_str
     cmp.save('trans.cmp')
+
+
+def test_get_cmp_mizs(cmp):
+    mizs = cmp.get_mizs()
+    assert len(mizs) == 16
+    assert 'Pilotenalltag_01.miz' in mizs
+    assert 'Pilotenalltag_16.miz' in mizs
