@@ -1,6 +1,6 @@
 import os
 
-from dcsdictionary import DcsDictionary
+from dcsdictionary import DcsDictionary, CmpDictionary
 
 
 def test_load_dict(tmpdir):
@@ -16,14 +16,16 @@ def test_load_dict(tmpdir):
     assert old_content.replace(" ", "") == new_content.replace(" ", "")
 
 
-def test_load_cmp_dict():
-    path = 'Pilotenalltag/Pilotenalltag.cmp'
-    dict = DcsDictionary.from_file_path(path)
-    assert False
-
-
 def test_translate_dict():
     dd = DcsDictionary.from_file_path('dictionary')
     tdd = dd.translate()
     assert len(dd.dict) == len(tdd.dict)
     assert tdd.dict['DictKey_ActionText_400'].startswith('Woodpecker 2 reports:')
+
+
+def test_translate_cmp_desc():
+    path = 'Pilotenalltag/Pilotenalltag.cmp'
+    cmp = CmpDictionary.from_file_path(path)
+    cmp.translate()
+    assert '["description_EN"] = "Everyday life of a pilot' in cmp.lua_str
+    cmp.save('trans.cmp')
