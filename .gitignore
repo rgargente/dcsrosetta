@@ -1,4 +1,6 @@
+*__pycache__*
 .idea/
 build/
 dist/
 dcsrosetta.spec
+yandex_key.txt
