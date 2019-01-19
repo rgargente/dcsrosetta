@@ -8,6 +8,7 @@ pytest = "*"
 "yandex.translate" = "*"
 luaparser = "*"
 appjar = "*"
+pyinstaller = "*"
 
 [dev-packages]
 
