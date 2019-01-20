@@ -1,5 +1,4 @@
 from luaparser import ast
-from yandex_translate import YandexTranslate
 
 from dcsyandex import DcsYandexTranlator
 
@@ -29,6 +28,14 @@ class DcsDictionary:
         self.lua_str = None
         self.field_filter = lambda f: True
 
+    def __eq__(self, other):
+        return self.dict == other.dict \
+               and self.lua_str == other.lua_str \
+               and self.field_filter == other.field_filter
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def _load_dict(self, dict_path):
         with open(dict_path, encoding='UTF-8') as f:
             self.lua_str = f.read()
@@ -39,9 +46,10 @@ class DcsDictionary:
         values = [f.value.s for f in fields if self.field_filter(f)]
         self.dict = dict(zip(keys, values))
 
-    def translate(self):
+    def translate_item_by_item(self):
         """
-
+        Translates a dictionary making one translation request per item.
+        WARNING: Slow! Better use translate_whole. Kept in case the other method fails
         :return: a translated DcsDictionary
         """
         trans_dict = {}
@@ -59,6 +67,27 @@ class DcsDictionary:
                 trans_dict[k] = v
         return self.from_dict(trans_dict, trans_str)
 
+    def translate_whole(self):
+        """
+        Translates a dictionary making one translation request for the whole dictionary. It's faster this way.
+        WARNING: If it doesn't work use
+        :return: a translated DcsDictionary
+        """
+        whole_text = '. '.join('[[[*** {} ***]]]'.format(v) for v in self.dict.values())
+        trans_whole = self.translator.translate(whole_text, 'en')['text'][0]
+        values = [v.strip() for v in trans_whole.split('***]]]. [[[***')]
+        assert len(self.dict) == len(values)
+        values[0] = values[0][7:]
+        values[-1] = values[-1][:-7]
+        trans_dict = {z[0]: z[1] for z in zip(self.dict.keys(), values)}
+
+        trans_str = self.lua_str
+        for k, v in self.dict.items():
+            if v:
+                trans_str = trans_str.replace(v, trans_dict[k])
+
+        return self.from_dict(trans_dict, trans_str)
+
     def save(self, dest_path):
         with open(dest_path, 'w', encoding='UTF-8') as f:
             f.write(self.lua_str)
@@ -69,7 +98,7 @@ class CmpDictionary(DcsDictionary):
         super()
         self.field_filter = lambda f: f.key.s.startswith('description') or f.key.s == 'file'
 
-    def translate(self):
+    def translate_item_by_item(self):
         """Translates the cmp file description"""
         desc = self.dict['description']
         lua_desc = '["description"] = "{}",'.format(desc)

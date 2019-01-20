@@ -19,7 +19,14 @@ def test_load_dict(tmpdir):
 
 def test_translate_dict():
     dd = DcsDictionary.from_file_path('dictionary')
-    tdd = dd.translate()
+    tdd = dd.translate_item_by_item()
+    assert len(dd.dict) == len(tdd.dict)
+    assert tdd.dict['DictKey_ActionText_400'].startswith('Woodpecker 2 reports:')
+
+
+def test_translate_whole():
+    dd = DcsDictionary.from_file_path('dictionary')
+    tdd = dd.translate_whole()
     assert len(dd.dict) == len(tdd.dict)
     assert tdd.dict['DictKey_ActionText_400'].startswith('Woodpecker 2 reports:')
 
@@ -31,7 +38,7 @@ def cmp():
 
 
 def test_translate_cmp_desc(cmp):
-    cmp.translate()
+    cmp.translate_item_by_item()
     assert '["description_EN"] = "Everyday life of a pilot' in cmp.lua_str
     cmp.save('trans.cmp')
 
