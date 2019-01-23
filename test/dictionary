@@ -23,5 +23,9 @@ Ziel: Landung in Sochi-Adler (RSBN 6).\
 \
 ",
     ["DictKey_WptName_55"] = "",
+	["DictKey_descriptionText_1"] = "Navigationstraining\
+Rotte Specht startet zu einem Flug nach Sochi-Adler. Während des Fluges sind festgelegte Punkte möglichst genau zu überfliegen, Zielpunkt 1 in Richtung 271 ist der Ort Peredovaya. Dort muß das ARC 9 (NDB) überflogen werden. Anschließend dreht Rotte Specht in Richtung 268 und überfliegt in 56 km Entfernung  das Industriegebiet des Ortes Psebay.  Weiter geht*s 55 km Richtung 259 bis Hamishki. Abschließend in Richtung 210 drehen um in Sochi-Adler zu landen (RSBN 6). \
+Während des Fluges hat der Flügelmann die Aufgabe, die Ankunft an den Zielpunkten zu melden.\
+Viel Erfolg.",
     ["DictKey_GroupName_412"] = "AN-30",
 } -- end of dictionary

@@ -70,22 +70,25 @@ class DcsDictionary:
     def translate_whole(self):
         """
         Translates a dictionary making one translation request for the whole dictionary. It's faster this way.
-        WARNING: If it doesn't work use
+        WARNING: If it doesn't work use translate_item_by_item
         :return: a translated DcsDictionary
         """
-        whole_text = '. '.join('[[[*** {} ***]]]'.format(v) for v in self.dict.values())
-        trans_whole = self.translator.translate(whole_text, 'en')['text'][0]
-        values = [v.strip() for v in trans_whole.split('***]]]. [[[***')]
-        assert len(self.dict) == len(values)
-        values[0] = values[0][7:]
-        values[-1] = values[-1][:-7]
-        trans_dict = {z[0]: z[1] for z in zip(self.dict.keys(), values)}
 
+        # Using less symbols ([* *]) seems to increase the probabilities of the translator being confused
+        whole_text = '. '.join('[[** {} **]]'.format(v) for v in self.dict.values() if v)
+        trans_whole = self.translator.translate(whole_text, 'en')['text'][0]
+        trans_values = [v.strip() for v in trans_whole.split('**]]. [[**')]
+        trans_values[0] = trans_values[0][5:]
+        trans_values[-1] = trans_values[-1][:-5]
+        trans_dict = {}
         trans_str = self.lua_str
+        trans_values_iter = iter(trans_values)
         for k, v in self.dict.items():
             if v:
+                trans_dict[k] = next(trans_values_iter)
                 trans_str = trans_str.replace(v, trans_dict[k])
-
+            else:
+                trans_dict[k] = ''
         return self.from_dict(trans_dict, trans_str)
 
     def save(self, dest_path):
