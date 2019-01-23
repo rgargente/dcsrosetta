@@ -1,6 +1,7 @@
 from luaparser import ast
 
 from dcsyandex import DcsYandexTranlator
+import io
 
 
 class DcsDictionary:
@@ -11,7 +12,9 @@ class DcsDictionary:
         dd = cls()
         if field_filter:
             dd.field_filter = field_filter
-        dd._load_dict(path)
+        with open(path, encoding='UTF-8') as f:
+            lua_str = f.read()
+        dd._load_dict(lua_str)
         return dd
 
     @classmethod
@@ -23,23 +26,26 @@ class DcsDictionary:
             dd.field_filter = field_filter
         return dd
 
+    @classmethod
+    def from_lua_str(cls, lua_str: str):
+        dd = cls()
+        dd._load_dict(lua_str)
+        return dd
+
     def __init__(self):
         self.dict = None
         self.lua_str = None
         self.field_filter = lambda f: True
 
     def __eq__(self, other):
-        return self.dict == other.dict \
-               and self.lua_str == other.lua_str \
-               and self.field_filter == other.field_filter
+        return self.dict == other.dict
 
     def __ne__(self, other):
         return not self.__eq__(other)
 
-    def _load_dict(self, dict_path):
-        with open(dict_path, encoding='UTF-8') as f:
-            self.lua_str = f.read()
-        lua = ast.parse(self.lua_str)
+    def _load_dict(self, lua_str):
+        self.lua_str = lua_str
+        lua = ast.parse(lua_str)
         fields = lua.body.body[0].values[0].fields
 
         keys = [f.key.s for f in fields if self.field_filter(f)]
@@ -94,6 +100,19 @@ class DcsDictionary:
     def save(self, dest_path):
         with open(dest_path, 'w', encoding='UTF-8') as f:
             f.write(self.lua_str)
+
+    def to_lua(self):
+        # dictionary =
+        # {
+        #     ["DictKey_WptName_159"] = "",
+        # }
+        strio = io.StringIO()
+        strio.write('dictionary = \n')
+        strio.write('{\n')
+        for key, value in self.dict.items():
+            strio.write(f'\t["{key}"] = "{value}",\n')
+        strio.write('}')
+        return strio.getvalue()
 
 
 class CmpDictionary(DcsDictionary):
