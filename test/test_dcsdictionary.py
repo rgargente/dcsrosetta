@@ -5,7 +5,7 @@ from dcsdictionary import DcsDictionary, CmpDictionary
 
 
 @pytest.fixture()
-def dictionary():
+def dcs_dict():
     return DcsDictionary.from_file_path('dictionary')
 
 
@@ -22,22 +22,22 @@ def test_load_dict(tmpdir):
     assert old_content.replace(" ", "") == new_content.replace(" ", "")
 
 
-def test_translate_dict(dictionary):
-    trans = dictionary.translate_item_by_item()
-    assert len(dictionary.dict) == len(trans.dict)
+def test_translate_dict(dcs_dict):
+    trans = dcs_dict.translate_item_by_item()
+    assert len(dcs_dict.dict) == len(trans.dict)
     assert trans.dict['DictKey_ActionText_400'].startswith('Woodpecker 2 reports:')
 
 
-def test_translate_whole(dictionary):
-    trans = dictionary.translate_whole()
-    assert len(dictionary.dict) == len(trans.dict)
+def test_translate_whole(dcs_dict):
+    trans = dcs_dict.translate_whole()
+    assert len(dcs_dict.dict) == len(trans.dict)
     assert trans.dict['DictKey_ActionText_400'].startswith('Woodpecker 2 reports:')
 
 
-def test_to_lua(dictionary):
-    lua_dict = dictionary.to_lua()
+def test_to_lua(dcs_dict):
+    lua_dict = DcsDictionary.to_lua(dcs_dict.dict)
     new_dict = DcsDictionary.from_lua_str(lua_dict)
-    assert dictionary == new_dict
+    assert dcs_dict == new_dict
 
 
 @pytest.fixture()

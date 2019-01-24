@@ -31,6 +31,6 @@ class Mission:
         shutil.copytree(os.path.join(tmp, 'l10n/DEFAULT/'),
                         os.path.join(tmp, 'l10n/EN/'))
         dd = DcsDictionary.from_file_path(os.path.join(tmp, self.DICTIONARY_PATH))
-        tdd = dd.translate_item_by_item()
+        tdd = dd.translate_whole()
         tdd.save(os.path.join(tmp, 'l10n/EN/dictionary'))
         self._zip(tmp, dest_miz)

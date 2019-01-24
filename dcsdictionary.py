@@ -87,31 +87,30 @@ class DcsDictionary:
         trans_values[0] = trans_values[0][5:]
         trans_values[-1] = trans_values[-1][:-5]
         trans_dict = {}
-        trans_str = self.lua_str
         trans_values_iter = iter(trans_values)
         for k, v in self.dict.items():
             if v:
                 trans_dict[k] = next(trans_values_iter)
-                trans_str = trans_str.replace(v, trans_dict[k])
             else:
                 trans_dict[k] = ''
-        return self.from_dict(trans_dict, trans_str)
+        return self.from_dict(trans_dict, self.to_lua(trans_dict))
 
     def save(self, dest_path):
         with open(dest_path, 'w', encoding='UTF-8') as f:
             f.write(self.lua_str)
 
-    def to_lua(self):
-        # dictionary =
-        # {
-        #     ["DictKey_WptName_159"] = "",
-        # }
+    @classmethod
+    def to_lua(cls, dict):
         strio = io.StringIO()
         strio.write('dictionary = \n')
         strio.write('{\n')
-        for key, value in self.dict.items():
-            strio.write(f'\t["{key}"] = "{value}",\n')
-        strio.write('}')
+        for key, value in dict.items():
+            value = value.strip()
+            if value.endswith('\\'):  # This caused a huge amount of headaches!
+                value = value[:-1]
+            strio.write(f'    ["{key}"] = "{value}",\n')
+        strio.write('} -- end of dictionary\n')
+        strio.write('')
         return strio.getvalue()
 
 
