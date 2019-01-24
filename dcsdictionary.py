@@ -18,10 +18,10 @@ class DcsDictionary:
         return dd
 
     @classmethod
-    def from_dict(cls, dict, lua_str, field_filter=None):
+    def from_dict(cls, dict, field_filter=None):
         dd = cls()
         dd.dict = dict
-        dd.lua_str = lua_str
+        dd.lua_str = cls.to_lua(dict)
         if field_filter:
             dd.field_filter = field_filter
         return dd
@@ -59,7 +59,6 @@ class DcsDictionary:
         :return: a translated DcsDictionary
         """
         trans_dict = {}
-        trans_str = self.lua_str
         count = len(self.dict)
         i = 0
         for k, v in self.dict.items():
@@ -67,11 +66,10 @@ class DcsDictionary:
             print(f'Translating {i} of {count}')
             if v:
                 t = self.translator.translate(v, 'en')['text'][0]
-                trans_str = trans_str.replace(v, t)
                 trans_dict[k] = t
             else:
                 trans_dict[k] = v
-        return self.from_dict(trans_dict, trans_str)
+        return self.from_dict(trans_dict)
 
     def translate_whole(self):
         """

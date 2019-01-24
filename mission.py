@@ -25,12 +25,15 @@ class Mission:
                 zipf.write(file_path, file_path[len(source_folder):])
         zipf.close()
 
-    def translate_miz(self, dest_miz: str):
+    def translate_miz(self, dest_miz: str, whole: bool = True):
         tmp = tempfile.mkdtemp()
         self._unzip(tmp)
         shutil.copytree(os.path.join(tmp, 'l10n/DEFAULT/'),
                         os.path.join(tmp, 'l10n/EN/'))
         dd = DcsDictionary.from_file_path(os.path.join(tmp, self.DICTIONARY_PATH))
-        tdd = dd.translate_whole()
+        if whole:
+            tdd = dd.translate_whole()
+        else:
+            tdd = dd.translate_item_by_item()
         tdd.save(os.path.join(tmp, 'l10n/EN/dictionary'))
         self._zip(tmp, dest_miz)
