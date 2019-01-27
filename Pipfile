@@ -7,8 +7,8 @@ name = "pypi"
 pytest = "*"
 "yandex.translate" = "*"
 luaparser = "*"
-appjar = "*"
 pyinstaller = "*"
+guizero = "*"
 
 [dev-packages]
 

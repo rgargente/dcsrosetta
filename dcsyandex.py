@@ -14,3 +14,4 @@ class DcsYandexTranlator:
 
     def translate(self, desc, lang):
         return self.translator.translate(desc, lang)
+
