@@ -9,6 +9,7 @@ pytest = "*"
 luaparser = "*"
 pyinstaller = "*"
 guizero = "*"
+pysimplegui = "*"
 
 [dev-packages]
 

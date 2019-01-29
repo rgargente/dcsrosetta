@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "87965290aa538317c732a18e4ce03fbf032e6364d6a9bededb7b40a737c29fcb"
+            "sha256": "c0d90e4ff3677c6f3e2e56a566530b48fbcc25429b5278c1a5e4ec11be4ee797"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -63,7 +63,7 @@
                 "sha256:05eed71e2e327246ad6b38c540c4a3117230b19679b875190486ddd2d721422d",
                 "sha256:f8ac84de7840f5b9c4e3347b3c1eaa50f7e49c2b07596221daec5edaabbd7c48"
             ],
-            "markers": "sys_platform == 'win32'",
+            "markers": "python_version != '3.1.*' and python_version >= '2.7' and python_version != '3.3.*' and python_version != '3.2.*' and python_version != '3.0.*'",
             "version": "==0.4.1"
         },
         "future": {
@@ -176,6 +176,14 @@
             ],
             "index": "pypi",
             "version": "==3.4"
+        },
+        "pysimplegui": {
+            "hashes": [
+                "sha256:08c428e1df6a1f5dd7f3d5e40aa621ad92f5826cfa478f3ebec153f906fd6bb0",
+                "sha256:479b7a57d02133e8c9b856cf147c03f20afc44de84d7b2737e201e16e3881de0"
+            ],
+            "index": "pypi",
+            "version": "==3.24.0"
         },
         "pytest": {
             "hashes": [
