@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 
 from dcsyandex import DcsYandexTranlator
+from paths import resource_path
 
 
 class DcsRosettaApp:
@@ -11,7 +12,7 @@ class DcsRosettaApp:
               [sg.Output(size=(110, 30))]]
 
     def __init__(self):
-        self.window = sg.Window('DCS Rosetta').Layout(self.layout)
+        self.window = sg.Window('DCS Rosetta', icon=resource_path('rosetta.ico')).Layout(self.layout)
         self.window.ReadNonBlocking()
 
         self.yandex_translator = DcsYandexTranlator()
