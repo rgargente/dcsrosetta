@@ -1,1 +1,1 @@
-pyinstaller --onefile dcsrosetta.py
+pyinstaller --noconsole --onefile dcsrosetta.py
