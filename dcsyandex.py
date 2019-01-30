@@ -19,10 +19,12 @@ class DcsYandexTranlator:
         with open(self.YANDEX_KEY_FILE) as f:
             self.key = f.read()
         self.translator = YandexTranslate(self.key)
+        print('Yandex key loaded')
 
     def save_key(self, key: str):
         with open(self.YANDEX_KEY_FILE, 'w') as f:
             f.write(key)
+        print("Yandex key saved")
 
     def translate(self, desc, lang):
         return self.translator.translate(desc, lang)
