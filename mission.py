@@ -25,15 +25,21 @@ class Mission:
                 zipf.write(file_path, file_path[len(source_folder):])
         zipf.close()
 
-    def translate_miz(self, dest_miz: str, whole: bool = True):
+    def translate(self, dest_miz: str = None, whole: bool = True):
         tmp = tempfile.mkdtemp()
         self._unzip(tmp)
-        shutil.copytree(os.path.join(tmp, 'l10n/DEFAULT/'),
-                        os.path.join(tmp, 'l10n/EN/'))
+        en_path = os.path.join(tmp, 'l10n/EN/')
+        if os.path.exists(en_path):
+            raise (Exception('It seems like this mission already has an English translation!'))
+        shutil.copytree(os.path.join(tmp, 'l10n/DEFAULT/'), en_path)
         dd = DcsDictionary.from_file_path(os.path.join(tmp, self.DICTIONARY_PATH))
+        print('Translating mission...')
         if whole:
             tdd = dd.translate_whole()
         else:
             tdd = dd.translate_item_by_item()
         tdd.save(os.path.join(tmp, 'l10n/EN/dictionary'))
+        if dest_miz is None:
+            dest_miz = self.path.replace('.miz', '_trans.miz')
         self._zip(tmp, dest_miz)
+        print('New translated mission generated: {}'.format(dest_miz))

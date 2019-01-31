@@ -22,7 +22,7 @@ def test_unzip_and_zip(mission, tmpdir):
 
 def test_translate_miz_whole(mission, tmpdir):
     dest_miz = '01.miz'
-    mission.translate_miz(dest_miz, whole=True)
+    mission.translate(dest_miz, whole=True)
     translated_miz = Mission(dest_miz)
     translated_miz._unzip(tmpdir)
     pass
@@ -31,7 +31,7 @@ def test_translate_miz_whole(mission, tmpdir):
 # TODO Refactor this
 def test_translate_miz_steps(mission, tmpdir):
     dest_miz = '01.miz'
-    mission.translate_miz(dest_miz, whole=False)
+    mission.translate(dest_miz, whole=False)
     translated_miz = Mission(dest_miz)
     translated_miz._unzip(tmpdir)
     pass

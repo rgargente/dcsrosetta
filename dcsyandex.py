@@ -27,4 +27,6 @@ class DcsYandexTranlator:
         print("Yandex key saved")
 
     def translate(self, desc, lang):
-        return self.translator.translate(desc, lang)
+        response = self.translator.translate(desc, lang)
+        print('Received response from Yandex')
+        return response
