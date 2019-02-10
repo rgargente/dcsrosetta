@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 
+from campaign import Campaign
 from dcsyandex import DcsYandexTranlator
 from mission import Mission
 from paths import resource_path
@@ -28,8 +29,13 @@ class DcsRosettaApp:
                 self.save_yandex_key(values['yandex_key'])
             elif event == 'Translate':
                 try:
-                    miz = Mission(values['path'])
-                    miz.translate()
+                    path = values['path']
+                    if path.endswith('.miz'):
+                        miz = Mission(path)
+                        miz.translate()
+                    else:
+                        cmp = Campaign(path)
+                        cmp.translate()
                 except Exception as e:
                     print(e)
             else:

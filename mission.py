@@ -18,6 +18,8 @@ class Mission:
             zip.close()
 
     def _zip(self, source_folder, dest_miz_path):
+        if not os.path.exists(os.path.dirname(dest_miz_path)):
+            os.mkdir(os.path.dirname(dest_miz_path))
         zipf = zipfile.ZipFile(dest_miz_path, mode='w')
         for root, _, files in os.walk(source_folder):
             for file in files:

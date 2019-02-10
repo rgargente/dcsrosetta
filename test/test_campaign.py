@@ -1,6 +1,6 @@
 import pytest
 
-from dcsdictionarycmp import CmpDictionary
+from campaign import CmpDictionary
 
 
 @pytest.fixture()
