@@ -1,3 +1,5 @@
+from threading import Thread
+
 import PySimpleGUI as sg
 
 from campaign import Campaign
@@ -15,7 +17,7 @@ class DcsRosettaApp:
 
     def __init__(self):
         self.window = sg.Window('DCS Rosetta', icon=resource_path('rosetta.ico')).Layout(self.layout)
-        self.window.ReadNonBlocking()
+        self.window.Read(timeout=0)
 
         self.yandex_translator = DcsYandexTranlator()
         self.window.FindElement('yandex_key').Update(self.yandex_translator.key)
@@ -32,14 +34,14 @@ class DcsRosettaApp:
                     path = values['path']
                     if path.endswith('.miz'):
                         miz = Mission(path)
-                        miz.translate()
+                        Thread(group=None, target=miz.translate).start()
                     else:
                         cmp = Campaign(path)
-                        cmp.translate()
+                        Thread(group=None, target=cmp.translate).start()
                 except Exception as e:
                     print(e)
-            else:
-                break
+            # else:
+            #     break
 
     def save_yandex_key(self, value):
         self.yandex_translator.save_key(value)

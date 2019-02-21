@@ -37,7 +37,10 @@ class Mission:
         dd = DcsDictionary.from_file_path(os.path.join(tmp, self.DICTIONARY_PATH))
         print('Translating mission...')
         if whole:
-            tdd = dd.translate_whole()
+            try:
+                tdd = dd.translate_whole()
+            except:
+                tdd = dd.translate_item_by_item()
         else:
             tdd = dd.translate_item_by_item()
         tdd.save(os.path.join(tmp, 'l10n/EN/dictionary'))

@@ -17,7 +17,7 @@ class CmpDictionary(DcsDictionary):
         lua_desc = '["description"] = "{}",'.format(desc)
         self.lua_str = self.lua_str.replace(lua_desc,
                                             lua_desc + '\n    ["description_EN"] = "{}",'.format(
-                                                self.translator.translate(desc, 'en')['text'][0]))
+                                                self.translator.translate(desc, 'en')))
 
     def get_mizs(self):
         mizs = []

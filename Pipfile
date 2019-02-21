@@ -4,11 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pytest = "*"
+pytest = "==4.3.0"
 "yandex.translate" = "*"
 luaparser = "*"
 pyinstaller = "*"
-guizero = "*"
 pysimplegui = "*"
 
 [dev-packages]

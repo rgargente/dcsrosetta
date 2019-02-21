@@ -65,7 +65,7 @@ class DcsDictionary:
             i += 1
             print(f'Translating {i} of {count}')
             if v:
-                t = self.translator.translate(v, 'en')['text'][0]
+                t = self.translator.translate(v, 'en')
                 trans_dict[k] = t
             else:
                 trans_dict[k] = v
@@ -80,7 +80,7 @@ class DcsDictionary:
 
         # Using less symbols ([* *]) seems to increase the probabilities of the translator being confused
         whole_text = '. '.join('[[** {} **]]'.format(v) for v in self.dict.values() if v)
-        trans_whole = self.translator.translate(whole_text, 'en')['text'][0]
+        trans_whole = self.translator.translate(whole_text, 'en')
         trans_values = [v.strip() for v in trans_whole.split('**]]. [[**')]
         trans_values[0] = trans_values[0][5:]
         trans_values[-1] = trans_values[-1][:-5]
