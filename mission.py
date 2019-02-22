@@ -39,7 +39,8 @@ class Mission:
         if whole:
             try:
                 tdd = dd.translate_whole()
-            except:
+            except Exception as e:
+                print(e)
                 tdd = dd.translate_item_by_item()
         else:
             tdd = dd.translate_item_by_item()
