@@ -52,7 +52,7 @@ class DcsDictionary:
         values = [f.value.s for f in fields if self.field_filter(f)]
         self.dict = dict(zip(keys, values))
 
-    def translate_item_by_item(self):
+    def translate_item_by_item(self, from_lang, to_lang):
         """
         Translates a dictionary making one translation request per item.
         WARNING: Slow! Better use translate_whole. Kept in case the other method fails
@@ -63,15 +63,16 @@ class DcsDictionary:
         i = 0
         for k, v in self.dict.items():
             i += 1
-            print(f'Translating {i} of {count}')
+            if not i % 10:
+                print(f'Translating {i} of {count}')
             if v:
-                t = self.translator.translate(v, 'en')
+                t = self.translator.translate(v, from_lang, to_lang)
                 trans_dict[k] = t
             else:
                 trans_dict[k] = v
         return self.from_dict(trans_dict)
 
-    def translate_whole(self):
+    def translate_whole(self, from_lang, to_lang):
         """
         Translates a dictionary making one translation request for the whole dictionary. It's faster this way.
         WARNING: If it doesn't work use translate_item_by_item
@@ -80,7 +81,7 @@ class DcsDictionary:
 
         # Using less symbols ([* *]) seems to increase the probabilities of the translator being confused
         whole_text = '. '.join('[[** {} **]]'.format(v) for v in self.dict.values() if v)
-        trans_whole = self.translator.translate(whole_text, 'en')
+        trans_whole = self.translator.translate(whole_text, from_lang, to_lang)
         trans_values = [v.strip() for v in trans_whole.split('**]]. [[**')]
         trans_values[0] = trans_values[0][5:]
         trans_values[-1] = trans_values[-1][:-5]
@@ -110,5 +111,3 @@ class DcsDictionary:
         strio.write('} -- end of dictionary\n')
         strio.write('')
         return strio.getvalue()
-
-

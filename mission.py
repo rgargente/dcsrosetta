@@ -27,24 +27,24 @@ class Mission:
                 zipf.write(file_path, file_path[len(source_folder):])
         zipf.close()
 
-    def translate(self, dest_miz: str = None, whole: bool = True):
+    def translate(self, dest_miz: str = None, whole: bool = True, from_lang=None, to_lang=None):
         tmp = tempfile.mkdtemp()
         self._unzip(tmp)
-        en_path = os.path.join(tmp, 'l10n/EN/')
-        if os.path.exists(en_path):
-            raise (Exception('It seems like this mission already has an English translation!'))
-        shutil.copytree(os.path.join(tmp, 'l10n/DEFAULT/'), en_path)
+        dest_trans_path = os.path.join(tmp, f'l10n/{to_lang.upper()}/')
+        if os.path.exists(dest_trans_path):
+            raise (Exception(f'It seems like this mission already has a "{to_lang}" translation!'))
+        shutil.copytree(os.path.join(tmp, 'l10n/DEFAULT/'), dest_trans_path)
         dd = DcsDictionary.from_file_path(os.path.join(tmp, self.DICTIONARY_PATH))
         print('Translating mission...')
         if whole:
             try:
-                tdd = dd.translate_whole()
+                tdd = dd.translate_whole(from_lang, to_lang)
             except Exception as e:
                 print(e)
-                tdd = dd.translate_item_by_item()
+                tdd = dd.translate_item_by_item(from_lang, to_lang)
         else:
             tdd = dd.translate_item_by_item()
-        tdd.save(os.path.join(tmp, 'l10n/EN/dictionary'))
+        tdd.save(os.path.join(tmp, f'l10n/{to_lang.upper()}/dictionary'))
         if dest_miz is None:
             dest_miz = self.path.replace('.miz', '_trans.miz')
         self._zip(tmp, dest_miz)

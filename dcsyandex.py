@@ -27,10 +27,24 @@ class DcsYandexTranlator:
             f.write(key)
         print("Yandex key saved")
 
-    def translate(self, desc, lang):
+    def translate(self, desc, from_lang, to_lang):
         self.translator.set_text(desc)
-        self.translator.set_from_lang(self.translator.detect_lang())
-        self.translator.set_to_lang('en')
+        if from_lang == 'Auto':
+            self.translator.set_from_lang(self.translator.detect_lang())
+        else:
+            self.translator.set_from_lang(from_lang)
+        self.translator.set_to_lang(to_lang)
         response = self.translator.translate()
-        print('Received response from Yandex')
+        # print('Received response from Yandex')
         return response
+
+    def get_langs(self):
+        langs_dict = {}
+        langs_list = self.translator.get_langs()
+        for pair in langs_list:
+            origin, dest = pair.split('-')
+            if origin in langs_dict:
+                langs_dict[origin].append(dest)
+            else:
+                langs_dict[origin] = [dest]
+        return langs_dict
