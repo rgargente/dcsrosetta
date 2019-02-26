@@ -1,3 +1,4 @@
+import webbrowser
 from threading import Thread
 
 import PySimpleGUI as sg
@@ -15,7 +16,9 @@ class DcsRosettaApp:
               [sg.Txt('Original language: '), sg.InputCombo(key='from_lang', values=['Auto'], enable_events=True),
                sg.Txt('Translated language: '), sg.InputCombo(key='to_lang', values=['en'], size=(2, 1))],
               [sg.Button('Translate', size=(98, 1))],
-              [sg.Output(size=(110, 30))]]
+              [sg.Output(size=(110, 30))],
+              [sg.Text('DCS Rosetta on GitHub', key='github', font=("Helvetica", 10, 'underline bold'), text_color='blue',
+                       click_submits=True)]]
 
     def __init__(self):
         self.window = sg.Window('DCS Rosetta', icon=resource_path('rosetta.ico')).Layout(self.layout)
@@ -50,6 +53,8 @@ class DcsRosettaApp:
                         Thread(group=None, target=cmp.translate, kwargs=self._get_langs_kwargs(values)).start()
                 except Exception as e:
                     print(e)
+            elif event == 'github':
+                webbrowser.open('https://github.com/rgargente/dcsrosetta')
 
     def save_yandex_key(self, value):
         self.yandex_translator.save_key(value)
