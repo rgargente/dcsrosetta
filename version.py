@@ -1,5 +1,5 @@
 import socket
-import urllib
+import requests
 
 
 def get_version():
@@ -12,7 +12,7 @@ def is_outdated():
     socket.setdefaulttimeout(1)  # second
     version_url = "https://raw.githubusercontent.com/rgargente/dcsrosetta/master/version.txt"
     try:
-        last_version = urllib.urlopen(version_url)
+        last_version = requests.get(version_url).text
         last_version = last_version.readline()
     except:
         return False  # Lets be conservative here
