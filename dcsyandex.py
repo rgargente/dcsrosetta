@@ -26,6 +26,7 @@ class DcsYandexTranlator:
         with open(self.YANDEX_KEY_FILE, 'w') as f:
             f.write(key)
         print("Yandex key saved")
+        self.load_key()
 
     def translate(self, desc, from_lang, to_lang):
         self.translator.set_text(desc)
@@ -39,6 +40,9 @@ class DcsYandexTranlator:
         return response
 
     def get_langs(self):
+        if not self.translator:
+            print('Please set your Yandex key')
+            return None
         langs_dict = {}
         langs_list = self.translator.get_langs()
         for pair in langs_list:

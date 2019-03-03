@@ -1,1 +1,1 @@
-pyinstaller --noconsole  -i rosetta.ico --add-data "rosetta.ico;." --onefile dcsrosetta.py
+pyinstaller --noconsole -i rosetta.ico --add-data "rosetta.ico;."  --add-data "version.txt;." --onefile dcsrosetta.py

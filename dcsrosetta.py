@@ -1,3 +1,4 @@
+import sys
 import webbrowser
 from threading import Thread
 
@@ -31,7 +32,8 @@ class DcsRosettaApp:
         self.yandex_translator = DcsYandexTranlator()
         self.window.FindElement('yandex_key').Update(self.yandex_translator.key)
         self.langs_dict = self.yandex_translator.get_langs()
-        self.window.FindElement('from_lang').Update(values=['Auto'] + list(self.langs_dict.keys()))
+        if self.langs_dict:
+            self.update_langs()
 
         self.run()
 
@@ -62,12 +64,25 @@ class DcsRosettaApp:
             elif event == 'new_version':
                 webbrowser.open('https://github.com/rgargente/dcsrosetta/releases')
 
+    def update_langs(self):
+        self.window.FindElement('from_lang').Update(values=['Auto'] + list(self.langs_dict.keys()))
+
     def save_yandex_key(self, value):
         self.yandex_translator.save_key(value)
+        self.langs_dict = self.yandex_translator.get_langs()
+        self.update_langs()
 
     def change_languages(self, from_lang):
         self.window.FindElement('to_lang').Update(values=self.langs_dict[from_lang])
 
 
 if __name__ == '__main__':
-    DcsRosettaApp()
+    try:
+        DcsRosettaApp()
+    except Exception as e:
+        old_stdout = sys.stdout
+        log_file = open("message.log", "w")
+        sys.stdout = log_file
+        print(e)
+        sys.stdout = old_stdout
+        log_file.close()

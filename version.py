@@ -1,10 +1,16 @@
 import socket
 import requests
 
+from paths import resource_path
+
 
 def get_version():
-    with open('version.txt') as f:
-        version = f.readline()
+    version = 'unkown'
+    try:
+        with open(resource_path('version.txt')) as f:
+            version = f.readline()
+    except Exception as e:
+        print(e)
     return version
 
 
