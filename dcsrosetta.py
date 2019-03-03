@@ -7,6 +7,7 @@ from campaign import Campaign
 from dcsyandex import DcsYandexTranlator
 from mission import Mission
 from paths import resource_path
+import version
 
 
 class DcsRosettaApp:
@@ -17,8 +18,11 @@ class DcsRosettaApp:
                sg.Txt('Translated language: '), sg.InputCombo(key='to_lang', values=['en'], size=(2, 1))],
               [sg.Button('Translate', size=(98, 1))],
               [sg.Output(size=(110, 30))],
-              [sg.Text('DCS Rosetta on GitHub', key='github', font=("Helvetica", 10, 'underline bold'), text_color='blue',
-                       click_submits=True)]]
+              [sg.Text(f'v{version.get_version()}'),
+               sg.Text('NEW VERSION AVAILABLE!', key='new_version', font=("Helvetica", 10, 'underline bold'),
+                       text_color='red', visible=version.is_outdated(), click_submits=True),
+               sg.Text('DCS Rosetta on GitHub', key='github', font=("Helvetica", 10, 'underline bold'),
+                       text_color='blue', click_submits=True)]]
 
     def __init__(self):
         self.window = sg.Window('DCS Rosetta', icon=resource_path('rosetta.ico')).Layout(self.layout)
@@ -55,6 +59,8 @@ class DcsRosettaApp:
                     print(e)
             elif event == 'github':
                 webbrowser.open('https://github.com/rgargente/dcsrosetta')
+            elif event == 'new_version':
+                webbrowser.open('https://github.com/rgargente/dcsrosetta/releases')
 
     def save_yandex_key(self, value):
         self.yandex_translator.save_key(value)
