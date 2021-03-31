@@ -7,7 +7,7 @@ name = "pypi"
 pytest = "==4.3.0"
 "yandex.translate" = "*"
 luaparser = "*"
-pyinstaller = "*"
+PyInstaller = ">=3.6"
 pysimplegui = "*"
 
 [dev-packages]
