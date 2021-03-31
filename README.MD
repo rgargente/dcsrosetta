@@ -1,5 +1,9 @@
 # DCS Rosetta
 
+UPDATE: Yandex no longer provides free API keys so DCS Rosetta doesn't work anyrmore. I don't have the time to 
+look for a free alternative at the moment but might do in the future. Anyway, this is free software so if someone 
+is willing to update the software, feel free to fork it or create a PR!
+
 DCS Rosetta is a free application to automatically translate missions and campaigns for the DCS World flight simulator.
 It uses the free Yandex translation system. 
 
@@ -21,14 +25,7 @@ It uses the free Yandex translation system.
  
  The translated mission will have both the original and translated text inside. DCS World will load the most 
  approapriate language based on your system settings.
- 
- 
- ## How about a coffee?
- Did you know a software developer is an organism that transforms caffeine into code?
- 
- This is free and open source software, but if you want to buy me some coffee I would appreciate it :)
- 
- This is my paypal: <http://paypal.me/rgargente>
+
  
  ## FAQ
  ### DCS Rosetta failed when translating my mission / I found a bug! 
